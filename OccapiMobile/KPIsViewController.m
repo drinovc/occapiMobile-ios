@@ -7,12 +7,16 @@
 //
 
 #import "KPIsViewController.h"
+#import "AlertsViewController.h"
+#import "DataClass.h"
+#import "API.h"
 
 @interface KPIsViewController ()
 
 @end
 
 @implementation KPIsViewController
+@synthesize kpisList, _loadingIndicator;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -28,10 +32,25 @@
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.clearsSelectionOnViewWillAppear = NO;
+    
+    DataClass *_d = [DataClass instance];
+    NSString *kpiGroupCaption = [_d.kpiGroup objectForKey:@"kpiGroupCaption"];
+    self.title = kpiGroupCaption;
+    
+    // don't show empty table cells
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    // init loading indicator
+    _loadingIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    _loadingIndicator.center = CGPointMake(self.view.frame.size.width / 2, (self.view.frame.size.height) / 3);
+    _loadingIndicator.hidesWhenStopped = YES;
+    [self.view addSubview:_loadingIndicator];
+    [_loadingIndicator startAnimating];
+    
+    API *_api = [[API alloc] init];
+    _api.delegate = self;
+    [_api loadKPIs];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,77 +63,81 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return kpisList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    // Configure the cell...
+    if(cell == nil){
+        cell = [[UITableViewCell alloc]initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:CellIdentifier];
+    }
+    
+    NSDictionary *kpi = [kpisList objectAtIndex:indexPath.row];
+    NSString *caption = [kpi objectForKey:@"kpiCaption"];
+    NSString *monitor = [kpi objectForKey:@"monitorName"];
+    NSString *imgName = [NSString stringWithFormat:@"%@.png", monitor];
+    
+    cell.textLabel.text = caption;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.imageView.image = [UIImage imageNamed:imgName];
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (void) loadKPIsCompleted:(BOOL)success :(NSString*)message :(NSArray*)jsonArray
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+    [_loadingIndicator stopAnimating];
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+    if(!self.view.hidden) {
+        if(success) {
+            kpisList = jsonArray;
+            if([kpisList count] == 0) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"KPIs" message:@"No KPIs" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:  nil, nil];
+                [alert show];
+            }
+            else {
+                [self.tableView  reloadData];
+            }
+        }
+        else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Load KPIs error" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    NSIndexPath * path = [self.tableView indexPathForSelectedRow];
+    DataClass *_d = [DataClass instance];
+    _d.kpi = [kpisList objectAtIndex:path.row];
+    NSString *monitorName = [_d.kpi objectForKey:@"monitorName"];
+    
+    // load view - set segue id on view -> next view !!!
+    if([monitorName isEqualToString:@"line_chart"]) {
+        [self performSegueWithIdentifier:@"showLineChart" sender:self];
+    }
+    else {
+        [self performSegueWithIdentifier:@"showAlerts" sender:self];
+    }
+    
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-
- */
 
 @end

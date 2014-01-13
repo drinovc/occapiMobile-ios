@@ -9,5 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface LoginViewController : UIViewController
+@property (nonatomic, weak) IBOutlet UIView *loginContainer;
+@property (nonatomic, weak) IBOutlet UITextField *tfEmail;
+@property (nonatomic, weak) IBOutlet UITextField *tfPassword;
+@property (nonatomic, weak) IBOutlet UIButton *btnSignIn;
+
+@property(nonatomic, strong) NSArray *kpiGroups;
+@property(nonatomic, strong) UIActivityIndicatorView *_loadingIndicator;
 
 @end

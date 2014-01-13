@@ -15,13 +15,20 @@
 		CD183381187A2587008BD550 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD183380187A2587008BD550 /* AppDelegate.m */; };
 		CD183384187A2587008BD550 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD183382187A2587008BD550 /* Main_iPhone.storyboard */; };
 		CD183387187A2587008BD550 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD183385187A2587008BD550 /* Main_iPad.storyboard */; };
-		CD18338A187A2587008BD550 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD183389187A2587008BD550 /* ViewController.m */; };
 		CD18338C187A2587008BD550 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD18338B187A2587008BD550 /* Images.xcassets */; };
 		CD183393187A2587008BD550 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD183392187A2587008BD550 /* XCTest.framework */; };
 		CD183394187A2587008BD550 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD183370187A2587008BD550 /* Foundation.framework */; };
 		CD183395187A2587008BD550 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD183374187A2587008BD550 /* UIKit.framework */; };
 		CD18339D187A2587008BD550 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD18339B187A2587008BD550 /* InfoPlist.strings */; };
 		CD18339F187A2587008BD550 /* OccapiMobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD18339E187A2587008BD550 /* OccapiMobileTests.m */; };
+		CDA73E21187A38A200A7B266 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA73E20187A38A200A7B266 /* LoginViewController.m */; };
+		CDA73E24187A3A1C00A7B266 /* KPIGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA73E23187A3A1C00A7B266 /* KPIGroupsViewController.m */; };
+		CDA73E27187A3A3700A7B266 /* KPIsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA73E26187A3A3700A7B266 /* KPIsViewController.m */; };
+		CDA73E2A187A3BD100A7B266 /* AlertsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA73E29187A3BD100A7B266 /* AlertsViewController.m */; };
+		CDB184B118820D80001271D5 /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB184B018820D80001271D5 /* API.m */; };
+		CDE454C91881E2AA0091EA0E /* DataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE454C81881E2AA0091EA0E /* DataClass.m */; };
+		CDEF35E81882E607002B833F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CDEF35E71882E607002B833F /* Settings.bundle */; };
+		CDEF35EB18831027002B833F /* LineChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDEF35EA18831027002B833F /* LineChartViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,14 +54,27 @@
 		CD183380187A2587008BD550 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		CD183383187A2587008BD550 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		CD183386187A2587008BD550 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		CD183388187A2587008BD550 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CD183389187A2587008BD550 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		CD18338B187A2587008BD550 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CD183391187A2587008BD550 /* OccapiMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OccapiMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD183392187A2587008BD550 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CD18339A187A2587008BD550 /* OccapiMobileTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OccapiMobileTests-Info.plist"; sourceTree = "<group>"; };
 		CD18339C187A2587008BD550 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CD18339E187A2587008BD550 /* OccapiMobileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OccapiMobileTests.m; sourceTree = "<group>"; };
+		CDA73E1F187A38A200A7B266 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		CDA73E20187A38A200A7B266 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		CDA73E22187A3A1C00A7B266 /* KPIGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KPIGroupsViewController.h; sourceTree = "<group>"; };
+		CDA73E23187A3A1C00A7B266 /* KPIGroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KPIGroupsViewController.m; sourceTree = "<group>"; };
+		CDA73E25187A3A3700A7B266 /* KPIsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KPIsViewController.h; sourceTree = "<group>"; };
+		CDA73E26187A3A3700A7B266 /* KPIsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KPIsViewController.m; sourceTree = "<group>"; };
+		CDA73E28187A3BD100A7B266 /* AlertsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertsViewController.h; sourceTree = "<group>"; };
+		CDA73E29187A3BD100A7B266 /* AlertsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertsViewController.m; sourceTree = "<group>"; };
+		CDB184AF18820D80001271D5 /* API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
+		CDB184B018820D80001271D5 /* API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = API.m; sourceTree = "<group>"; };
+		CDE454C71881E2AA0091EA0E /* DataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataClass.h; sourceTree = "<group>"; };
+		CDE454C81881E2AA0091EA0E /* DataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataClass.m; sourceTree = "<group>"; };
+		CDEF35E71882E607002B833F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		CDEF35E918831027002B833F /* LineChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineChartViewController.h; sourceTree = "<group>"; };
+		CDEF35EA18831027002B833F /* LineChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineChartViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,10 +138,23 @@
 				CD183380187A2587008BD550 /* AppDelegate.m */,
 				CD183382187A2587008BD550 /* Main_iPhone.storyboard */,
 				CD183385187A2587008BD550 /* Main_iPad.storyboard */,
-				CD183388187A2587008BD550 /* ViewController.h */,
-				CD183389187A2587008BD550 /* ViewController.m */,
-				CD18338B187A2587008BD550 /* Images.xcassets */,
 				CD183377187A2587008BD550 /* Supporting Files */,
+				CD18338B187A2587008BD550 /* Images.xcassets */,
+				CDB184AF18820D80001271D5 /* API.h */,
+				CDB184B018820D80001271D5 /* API.m */,
+				CDE454C71881E2AA0091EA0E /* DataClass.h */,
+				CDE454C81881E2AA0091EA0E /* DataClass.m */,
+				CDA73E1F187A38A200A7B266 /* LoginViewController.h */,
+				CDA73E20187A38A200A7B266 /* LoginViewController.m */,
+				CDA73E22187A3A1C00A7B266 /* KPIGroupsViewController.h */,
+				CDA73E23187A3A1C00A7B266 /* KPIGroupsViewController.m */,
+				CDA73E25187A3A3700A7B266 /* KPIsViewController.h */,
+				CDA73E26187A3A3700A7B266 /* KPIsViewController.m */,
+				CDA73E28187A3BD100A7B266 /* AlertsViewController.h */,
+				CDA73E29187A3BD100A7B266 /* AlertsViewController.m */,
+				CDEF35E918831027002B833F /* LineChartViewController.h */,
+				CDEF35EA18831027002B833F /* LineChartViewController.m */,
+				CDEF35E71882E607002B833F /* Settings.bundle */,
 			);
 			path = OccapiMobile;
 			sourceTree = "<group>";
@@ -233,6 +266,7 @@
 			files = (
 				CD183387187A2587008BD550 /* Main_iPad.storyboard in Resources */,
 				CD18338C187A2587008BD550 /* Images.xcassets in Resources */,
+				CDEF35E81882E607002B833F /* Settings.bundle in Resources */,
 				CD183384187A2587008BD550 /* Main_iPhone.storyboard in Resources */,
 				CD18337B187A2587008BD550 /* InfoPlist.strings in Resources */,
 			);
@@ -253,9 +287,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD18338A187A2587008BD550 /* ViewController.m in Sources */,
+				CDE454C91881E2AA0091EA0E /* DataClass.m in Sources */,
 				CD183381187A2587008BD550 /* AppDelegate.m in Sources */,
+				CDEF35EB18831027002B833F /* LineChartViewController.m in Sources */,
+				CDB184B118820D80001271D5 /* API.m in Sources */,
 				CD18337D187A2587008BD550 /* main.m in Sources */,
+				CDA73E21187A38A200A7B266 /* LoginViewController.m in Sources */,
+				CDA73E24187A3A1C00A7B266 /* KPIGroupsViewController.m in Sources */,
+				CDA73E27187A3A3700A7B266 /* KPIsViewController.m in Sources */,
+				CDA73E2A187A3BD100A7B266 /* AlertsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +514,7 @@
 				CD1833A4187A2587008BD550 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CD1833A5187A2587008BD550 /* Build configuration list for PBXNativeTarget "OccapiMobileTests" */ = {
 			isa = XCConfigurationList;
@@ -482,6 +523,7 @@
 				CD1833A7187A2587008BD550 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
