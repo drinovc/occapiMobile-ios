@@ -9,13 +9,14 @@
 #import "AlertsViewController.h"
 #import "DataClass.h"
 #import "API.h"
+#import "SettingsKeys.h"
 
 @interface AlertsViewController ()
 
 @end
 
 @implementation AlertsViewController
-@synthesize alertsList, kpiNo, kpiCaption, kpiName, _loadingIndicator;
+@synthesize alertsList, kpiNo, kpiName, _loadingIndicator;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -38,8 +39,8 @@
     
     DataClass *_d = [DataClass instance];
     kpiName = [_d.kpi objectForKey:@"kpiName"];
-    NSString *kpiGroupCaption = [_d.kpiGroup objectForKey:@"kpiCaption"];
-    self.title = kpiGroupCaption;
+    NSString *kpiCaption = [_d.kpi objectForKey:@"kpiCaption"];
+    self.title = kpiCaption;
     
     // don't show empty table cells
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -51,15 +52,30 @@
     [self.view addSubview:_loadingIndicator];
     [_loadingIndicator startAnimating];
     
-    API *_api = [[API alloc] init];
-    _api.delegate = self;
-    [_api loadAlerts];
+    [self loadAlerts];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+/*
+- (void)didMoveToParentViewController:(UIViewController *)parent
+{
+
+}
+*/
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    if(self.isMovingFromParentViewController) {
+        // stop refreshing alerts on view exit
+        DataClass *d = [DataClass instance];
+        d.kpi = nil;
+    }
 }
 
 #pragma mark - Table view data source
@@ -84,6 +100,7 @@
     }
     
     NSDictionary *alert = [alertsList objectAtIndex:indexPath.row];
+    NSString *level = [alert objectForKey:@"level"];
     NSString *reason = [alert objectForKey:@"reason"];
     NSNumber *timestamp = [alert objectForKey:@"timestamp"];
     
@@ -95,30 +112,68 @@
     DataClass *_d = [DataClass instance];
     [_formatter setDateFormat:_d.dateTimeFormat];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", [_formatter stringFromDate:date]];
-    cell.detailTextLabel.text = reason;
+    if([level isEqualToString:@"LEVEL0"]) {
+        cell.textLabel.textColor = [UIColor blackColor];
+        cell.detailTextLabel.textColor = [UIColor blackColor];
+    }
+    else if([level isEqualToString:@"LEVEL1"]) {
+        cell.textLabel.textColor = [UIColor redColor];
+        cell.detailTextLabel.textColor = [UIColor redColor];
+    }
+    
+    cell.textLabel.font = [UIFont systemFontOfSize:16];
+    cell.textLabel.text = reason;
+    
+    cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [_formatter stringFromDate:date]];;
+    
     //cell.accessoryType = UITableViewCellAccessoryDetailButton;
     
     return cell;
 }
 
+- (void) loadAlerts
+{
+    NSLog(@"Load alerts");
+    
+    API *_api = [[API alloc] init];
+    _api.delegate = self;
+    [_api loadAlerts];
+}
+
+// called from API
 - (void) loadAlertsCompleted:(BOOL)success :(NSString*)message :(NSDictionary*)json
 {
     [_loadingIndicator stopAnimating];
     
-    if(!self.view.hidden) {
+    DataClass *d = [DataClass instance];
+    NSString *dKpiName = d.kpi ? [d.kpi objectForKey:@"kpiName"] : nil;
+    
+    if(dKpiName && [dKpiName isEqualToString:kpiName]) {
         if(success) {
             NSArray *jsonArray = [json objectForKey:@"alerts"];
             alertsList = [jsonArray filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
                 NSString *alertKpiName = [evaluatedObject objectForKey:@"kpiName"];
                 return [alertKpiName isEqualToString:kpiName];
             }]];
+            alertsList = [alertsList sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+                NSNumber *t1 = [a objectForKey:@"timestamp"];
+                NSNumber *t2 = [b objectForKey:@"timestamp"];
+                return [t2 compare:t1];
+            }];
+            
             if([alertsList count] == 0) {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alerts" message:@"No alerts" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alert show];
             }
             else {
                 [self.tableView  reloadData];
+                
+                // loop loading alerts
+                if([[NSUserDefaults standardUserDefaults] boolForKey:REFRESH_ALERTS]) {
+                    float delay = lroundf([[NSUserDefaults standardUserDefaults] floatForKey:REFRESH_ALERTS_TIMEOUT]);
+                    [self performSelector:@selector(loadAlerts) withObject:nil afterDelay:delay];
+                }
             }
         }
         else {

@@ -92,6 +92,7 @@
     return cell;
 }
 
+// called from API
 - (void) loadKPIsCompleted:(BOOL)success :(NSString*)message :(NSArray*)jsonArray
 {
     [_loadingIndicator stopAnimating];
@@ -119,6 +120,7 @@
     NSIndexPath * path = [self.tableView indexPathForSelectedRow];
     DataClass *_d = [DataClass instance];
     _d.kpi = [kpisList objectAtIndex:path.row];
+    
     NSString *monitorName = [_d.kpi objectForKey:@"monitorName"];
     
     // load view - set segue id on view -> next view !!!

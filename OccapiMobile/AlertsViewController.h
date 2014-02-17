@@ -11,7 +11,6 @@
 @interface AlertsViewController : UITableViewController
 @property(nonatomic, strong) NSArray *alertsList;
 @property int kpiNo;
-@property (nonatomic, strong) NSString *kpiCaption;
 @property (nonatomic, strong) NSString *kpiName;
 
 @property(nonatomic, strong) UIActivityIndicatorView *_loadingIndicator;

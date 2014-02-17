@@ -9,6 +9,8 @@
 #import "KPIGroupsViewController.h"
 #import "KPIsViewController.h"
 #import "DataClass.h"
+#import "API.h"
+#import "ECSlidingViewController.h"
 
 @interface KPIGroupsViewController ()
 
@@ -16,6 +18,11 @@
 
 @implementation KPIGroupsViewController
 @synthesize kpiGroupsList, _loadingIndicator;
+
+- (IBAction)unwindToMenuViewController:(UIStoryboardSegue *)segue
+{
+    NSLog(@"WORKING!");
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -30,6 +37,10 @@
 {
     [super viewDidLoad];
 
+    // adding gesture recognizer
+    ECSlidingViewController *slidingViewController = (ECSlidingViewController *)self.navigationController.parentViewController;
+    [self.view addGestureRecognizer:slidingViewController.panGesture];
+    
     // Uncomment the following line to preserve selection between presentations.
     self.clearsSelectionOnViewWillAppear = NO;
     
@@ -37,6 +48,10 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     self.title = @"KPI Groups";
+    
+    API *_api = [[API alloc] init];
+    _api.delegate = self;
+    [_api loadKPIGroups];
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,6 +88,28 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
+}
+
+// called from API
+- (void) loadKPIGroupsCompleted:(BOOL)success :(NSString*)message :(NSArray*)jsonArray;
+{
+    NSLog(@"Load KPI Groups completed");
+    
+    if(success) {
+        kpiGroupsList = jsonArray;
+        
+        if([kpiGroupsList count] == 0) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"KPI Groups" message:@"No KPI Groups" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:  nil, nil];
+            [alert show];
+        }
+        else {
+            [self.tableView  reloadData];
+        }
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Load KPI Groups error" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
 }
 
 #pragma mark - Navigation

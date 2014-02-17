@@ -8,17 +8,19 @@
 
 #import "API.h"
 #import "DataClass.h"
+#import "SettingsKeys.h"
 
 @implementation API
 
 - (void) login:(NSString*)email :(NSString*)password;
 {
     DataClass *d = [DataClass instance];
-    NSString *urlAsString = [NSString stringWithFormat:@"%@login/%@/%@", d.apiUrl, email, password];
+    NSString *apiUrl = [[NSUserDefaults standardUserDefaults] objectForKey:API_URL];
+    
+    NSString *urlAsString = [NSString stringWithFormat:@"%@login/%@/%@", apiUrl, email, password];
     NSURL *url = [[NSURL alloc] initWithString:urlAsString];
     NSLog(@"%@", urlAsString);
     
-    //[NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:url] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:url] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         
         if(connectionError) {
@@ -45,12 +47,11 @@
 - (void) loadKPIGroups
 {
     DataClass *d = [DataClass instance];
-    
-    NSString *urlAsString = [NSString stringWithFormat:@"%@kpigroup/user/%@", d.apiUrl, d.token];
+    NSString *apiUrl = [[NSUserDefaults standardUserDefaults] objectForKey:API_URL];
+    NSString *urlAsString = [NSString stringWithFormat:@"%@kpigroup/user/%@", apiUrl, d.token];
     NSURL *url = [[NSURL alloc] initWithString:urlAsString];
     NSLog(@"%@", urlAsString);
     
-    //[NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:url] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:url] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         
         if(connectionError) {
@@ -74,12 +75,11 @@
 {
     DataClass *d = [DataClass instance];
     NSString *kpiGroupName = [d.kpiGroup objectForKey:@"kpiGroupName"];
-    
-    NSString *urlAsString = [NSString stringWithFormat:@"%@kpi/group/%@/user/%@", d.apiUrl, kpiGroupName, d.token];
+    NSString *apiUrl = [[NSUserDefaults standardUserDefaults] objectForKey:API_URL];
+    NSString *urlAsString = [NSString stringWithFormat:@"%@kpi/group/%@/user/%@", apiUrl, kpiGroupName, d.token];
     NSURL *url = [[NSURL alloc] initWithString:urlAsString];
     NSLog(@"%@", urlAsString);
     
-    //[NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:url] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:url] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         
         if(connectionError) {
@@ -102,11 +102,11 @@
 - (void) loadAlerts
 {
     DataClass *d = [DataClass instance];
-    NSString *urlAsString = [NSString stringWithFormat:@"%@alerts/all_alerts/token/%@", d.apiUrl, d.token];
+    NSString *apiUrl = [[NSUserDefaults standardUserDefaults] objectForKey:API_URL];
+    NSString *urlAsString = [NSString stringWithFormat:@"%@alerts/all_alerts/token/%@", apiUrl, d.token];
     NSURL *url = [[NSURL alloc] initWithString:urlAsString];
     NSLog(@"%@", urlAsString);
     
-    //[NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:url] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:url] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         
         if(connectionError) {
@@ -120,7 +120,36 @@
                 [self.delegate loadAlertsCompleted:NO : @"Result is empty" : nil];
             }
             else {
-                [self.delegate loadAlertsCompleted:YES : @"KPIs loaded" : json];
+                [self.delegate loadAlertsCompleted:YES : @"Alerts loaded" : json];
+            }
+        }
+    }];
+}
+
+- (void) loadChart
+{
+    DataClass *d = [DataClass instance];
+    NSString *kpiName = [d.kpi objectForKey:@"kpiName"];
+    NSString *monitorName = [d.kpi objectForKey:@"monitorName"];
+    NSString *apiUrl = [[NSUserDefaults standardUserDefaults] objectForKey:API_URL];
+    NSString *urlAsString = [NSString stringWithFormat:@"%@chart/kpi/%@/monitor/%@/token/%@", apiUrl, kpiName, monitorName, d.token];
+    NSURL *url = [[NSURL alloc] initWithString:urlAsString];
+    NSLog(@"%@", urlAsString);
+    
+    [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:url] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        
+        if(connectionError) {
+            [self.delegate loadChartCompleted:NO : @"Connection error" : nil];
+        }
+        else {
+            NSError *error;
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+            
+            if([json count] == 0) {
+                [self.delegate loadChartCompleted:NO : @"Result is empty" : nil];
+            }
+            else {
+                [self.delegate loadChartCompleted:YES : @"Chart loaded" : json];
             }
         }
     }];

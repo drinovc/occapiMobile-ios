@@ -21,14 +21,29 @@
 		CD183395187A2587008BD550 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD183374187A2587008BD550 /* UIKit.framework */; };
 		CD18339D187A2587008BD550 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD18339B187A2587008BD550 /* InfoPlist.strings */; };
 		CD18339F187A2587008BD550 /* OccapiMobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD18339E187A2587008BD550 /* OccapiMobileTests.m */; };
+		CD3AB6A818982483009D36E0 /* MEMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3AB6A718982483009D36E0 /* MEMenuViewController.m */; };
+		CD6CFE3E18982F7700013D76 /* MenuNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6CFE3D18982F7700013D76 /* MenuNavigationController.m */; };
+		CD828A231898155B007CA8D7 /* LCInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD828A1C1898155A007CA8D7 /* LCInfoView.m */; };
+		CD828A241898155B007CA8D7 /* LCLegendView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD828A1E1898155A007CA8D7 /* LCLegendView.m */; };
+		CD828A251898155B007CA8D7 /* LCLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD828A201898155B007CA8D7 /* LCLineChartView.m */; };
+		CD828A261898155B007CA8D7 /* UIKit+DrawingHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = CD828A221898155B007CA8D7 /* UIKit+DrawingHelpers.m */; };
+		CD828A36189815D8007CA8D7 /* ECPercentDrivenInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = CD828A2A189815D8007CA8D7 /* ECPercentDrivenInteractiveTransition.m */; };
+		CD828A37189815D8007CA8D7 /* ECSlidingAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD828A2C189815D8007CA8D7 /* ECSlidingAnimationController.m */; };
+		CD828A38189815D8007CA8D7 /* ECSlidingInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = CD828A2F189815D8007CA8D7 /* ECSlidingInteractiveTransition.m */; };
+		CD828A39189815D8007CA8D7 /* ECSlidingSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = CD828A31189815D8007CA8D7 /* ECSlidingSegue.m */; };
+		CD828A3A189815D8007CA8D7 /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD828A33189815D8007CA8D7 /* ECSlidingViewController.m */; };
+		CD828A3B189815D8007CA8D7 /* UIViewController+ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD828A35189815D8007CA8D7 /* UIViewController+ECSlidingViewController.m */; };
 		CDA73E21187A38A200A7B266 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA73E20187A38A200A7B266 /* LoginViewController.m */; };
 		CDA73E24187A3A1C00A7B266 /* KPIGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA73E23187A3A1C00A7B266 /* KPIGroupsViewController.m */; };
 		CDA73E27187A3A3700A7B266 /* KPIsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA73E26187A3A3700A7B266 /* KPIsViewController.m */; };
 		CDA73E2A187A3BD100A7B266 /* AlertsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA73E29187A3BD100A7B266 /* AlertsViewController.m */; };
 		CDB184B118820D80001271D5 /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB184B018820D80001271D5 /* API.m */; };
 		CDE454C91881E2AA0091EA0E /* DataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE454C81881E2AA0091EA0E /* DataClass.m */; };
-		CDEF35E81882E607002B833F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CDEF35E71882E607002B833F /* Settings.bundle */; };
 		CDEF35EB18831027002B833F /* LineChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDEF35EA18831027002B833F /* LineChartViewController.m */; };
+		CDF20FBA189D438D00932BB8 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF20FB9189D438D00932BB8 /* SettingsViewController.m */; };
+		CDF20FBC189D5D4400932BB8 /* defaultPrefs.plist in Resources */ = {isa = PBXBuildFile; fileRef = CDF20FBB189D5D4400932BB8 /* defaultPrefs.plist */; };
+		CDF20FC1189D6A5000932BB8 /* SettingsKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF20FC0189D6A5000932BB8 /* SettingsKeys.m */; };
+		CDFD3703189D823F00F9B4E8 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFD3702189D823F00F9B4E8 /* AboutViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +75,31 @@
 		CD18339A187A2587008BD550 /* OccapiMobileTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OccapiMobileTests-Info.plist"; sourceTree = "<group>"; };
 		CD18339C187A2587008BD550 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CD18339E187A2587008BD550 /* OccapiMobileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OccapiMobileTests.m; sourceTree = "<group>"; };
+		CD3AB6A618982483009D36E0 /* MEMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEMenuViewController.h; sourceTree = "<group>"; };
+		CD3AB6A718982483009D36E0 /* MEMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEMenuViewController.m; sourceTree = "<group>"; };
+		CD6CFE3C18982F7700013D76 /* MenuNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuNavigationController.h; sourceTree = "<group>"; };
+		CD6CFE3D18982F7700013D76 /* MenuNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuNavigationController.m; sourceTree = "<group>"; };
+		CD828A1B1898155A007CA8D7 /* LCInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LCInfoView.h; path = "ios-linechart/LCInfoView.h"; sourceTree = "<group>"; };
+		CD828A1C1898155A007CA8D7 /* LCInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LCInfoView.m; path = "ios-linechart/LCInfoView.m"; sourceTree = "<group>"; };
+		CD828A1D1898155A007CA8D7 /* LCLegendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LCLegendView.h; path = "ios-linechart/LCLegendView.h"; sourceTree = "<group>"; };
+		CD828A1E1898155A007CA8D7 /* LCLegendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LCLegendView.m; path = "ios-linechart/LCLegendView.m"; sourceTree = "<group>"; };
+		CD828A1F1898155B007CA8D7 /* LCLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LCLineChartView.h; path = "ios-linechart/LCLineChartView.h"; sourceTree = "<group>"; };
+		CD828A201898155B007CA8D7 /* LCLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LCLineChartView.m; path = "ios-linechart/LCLineChartView.m"; sourceTree = "<group>"; };
+		CD828A211898155B007CA8D7 /* UIKit+DrawingHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIKit+DrawingHelpers.h"; path = "ios-linechart/UIKit+DrawingHelpers.h"; sourceTree = "<group>"; };
+		CD828A221898155B007CA8D7 /* UIKit+DrawingHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIKit+DrawingHelpers.m"; path = "ios-linechart/UIKit+DrawingHelpers.m"; sourceTree = "<group>"; };
+		CD828A29189815D8007CA8D7 /* ECPercentDrivenInteractiveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ECPercentDrivenInteractiveTransition.h; path = ECSlidingViewController/ECPercentDrivenInteractiveTransition.h; sourceTree = "<group>"; };
+		CD828A2A189815D8007CA8D7 /* ECPercentDrivenInteractiveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ECPercentDrivenInteractiveTransition.m; path = ECSlidingViewController/ECPercentDrivenInteractiveTransition.m; sourceTree = "<group>"; };
+		CD828A2B189815D8007CA8D7 /* ECSlidingAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ECSlidingAnimationController.h; path = ECSlidingViewController/ECSlidingAnimationController.h; sourceTree = "<group>"; };
+		CD828A2C189815D8007CA8D7 /* ECSlidingAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ECSlidingAnimationController.m; path = ECSlidingViewController/ECSlidingAnimationController.m; sourceTree = "<group>"; };
+		CD828A2D189815D8007CA8D7 /* ECSlidingConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ECSlidingConstants.h; path = ECSlidingViewController/ECSlidingConstants.h; sourceTree = "<group>"; };
+		CD828A2E189815D8007CA8D7 /* ECSlidingInteractiveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ECSlidingInteractiveTransition.h; path = ECSlidingViewController/ECSlidingInteractiveTransition.h; sourceTree = "<group>"; };
+		CD828A2F189815D8007CA8D7 /* ECSlidingInteractiveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ECSlidingInteractiveTransition.m; path = ECSlidingViewController/ECSlidingInteractiveTransition.m; sourceTree = "<group>"; };
+		CD828A30189815D8007CA8D7 /* ECSlidingSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ECSlidingSegue.h; path = ECSlidingViewController/ECSlidingSegue.h; sourceTree = "<group>"; };
+		CD828A31189815D8007CA8D7 /* ECSlidingSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ECSlidingSegue.m; path = ECSlidingViewController/ECSlidingSegue.m; sourceTree = "<group>"; };
+		CD828A32189815D8007CA8D7 /* ECSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ECSlidingViewController.h; path = ECSlidingViewController/ECSlidingViewController.h; sourceTree = "<group>"; };
+		CD828A33189815D8007CA8D7 /* ECSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ECSlidingViewController.m; path = ECSlidingViewController/ECSlidingViewController.m; sourceTree = "<group>"; };
+		CD828A34189815D8007CA8D7 /* UIViewController+ECSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+ECSlidingViewController.h"; path = "ECSlidingViewController/UIViewController+ECSlidingViewController.h"; sourceTree = "<group>"; };
+		CD828A35189815D8007CA8D7 /* UIViewController+ECSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+ECSlidingViewController.m"; path = "ECSlidingViewController/UIViewController+ECSlidingViewController.m"; sourceTree = "<group>"; };
 		CDA73E1F187A38A200A7B266 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		CDA73E20187A38A200A7B266 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		CDA73E22187A3A1C00A7B266 /* KPIGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KPIGroupsViewController.h; sourceTree = "<group>"; };
@@ -72,9 +112,15 @@
 		CDB184B018820D80001271D5 /* API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = API.m; sourceTree = "<group>"; };
 		CDE454C71881E2AA0091EA0E /* DataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataClass.h; sourceTree = "<group>"; };
 		CDE454C81881E2AA0091EA0E /* DataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataClass.m; sourceTree = "<group>"; };
-		CDEF35E71882E607002B833F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		CDEF35E918831027002B833F /* LineChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineChartViewController.h; sourceTree = "<group>"; };
 		CDEF35EA18831027002B833F /* LineChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineChartViewController.m; sourceTree = "<group>"; };
+		CDF20FB8189D438D00932BB8 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		CDF20FB9189D438D00932BB8 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		CDF20FBB189D5D4400932BB8 /* defaultPrefs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaultPrefs.plist; sourceTree = "<group>"; };
+		CDF20FBD189D666A00932BB8 /* SettingsKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsKeys.h; sourceTree = "<group>"; };
+		CDF20FC0189D6A5000932BB8 /* SettingsKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsKeys.m; sourceTree = "<group>"; };
+		CDFD3701189D823F00F9B4E8 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		CDFD3702189D823F00F9B4E8 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +150,8 @@
 		CD183364187A2587008BD550 = {
 			isa = PBXGroup;
 			children = (
+				CD828A281898159B007CA8D7 /* ECSlidingViewController */,
+				CD828A271898157C007CA8D7 /* ios-linechart */,
 				CD183376187A2587008BD550 /* OccapiMobile */,
 				CD183398187A2587008BD550 /* OccapiMobileTests */,
 				CD18336F187A2587008BD550 /* Frameworks */,
@@ -138,12 +186,14 @@
 				CD183380187A2587008BD550 /* AppDelegate.m */,
 				CD183382187A2587008BD550 /* Main_iPhone.storyboard */,
 				CD183385187A2587008BD550 /* Main_iPad.storyboard */,
-				CD183377187A2587008BD550 /* Supporting Files */,
-				CD18338B187A2587008BD550 /* Images.xcassets */,
 				CDB184AF18820D80001271D5 /* API.h */,
 				CDB184B018820D80001271D5 /* API.m */,
 				CDE454C71881E2AA0091EA0E /* DataClass.h */,
 				CDE454C81881E2AA0091EA0E /* DataClass.m */,
+				CD3AB6A618982483009D36E0 /* MEMenuViewController.h */,
+				CD3AB6A718982483009D36E0 /* MEMenuViewController.m */,
+				CD6CFE3C18982F7700013D76 /* MenuNavigationController.h */,
+				CD6CFE3D18982F7700013D76 /* MenuNavigationController.m */,
 				CDA73E1F187A38A200A7B266 /* LoginViewController.h */,
 				CDA73E20187A38A200A7B266 /* LoginViewController.m */,
 				CDA73E22187A3A1C00A7B266 /* KPIGroupsViewController.h */,
@@ -154,7 +204,15 @@
 				CDA73E29187A3BD100A7B266 /* AlertsViewController.m */,
 				CDEF35E918831027002B833F /* LineChartViewController.h */,
 				CDEF35EA18831027002B833F /* LineChartViewController.m */,
-				CDEF35E71882E607002B833F /* Settings.bundle */,
+				CDFD3701189D823F00F9B4E8 /* AboutViewController.h */,
+				CDFD3702189D823F00F9B4E8 /* AboutViewController.m */,
+				CDF20FB8189D438D00932BB8 /* SettingsViewController.h */,
+				CDF20FB9189D438D00932BB8 /* SettingsViewController.m */,
+				CDF20FBD189D666A00932BB8 /* SettingsKeys.h */,
+				CDF20FC0189D6A5000932BB8 /* SettingsKeys.m */,
+				CD18338B187A2587008BD550 /* Images.xcassets */,
+				CD183377187A2587008BD550 /* Supporting Files */,
+				CDF20FBB189D5D4400932BB8 /* defaultPrefs.plist */,
 			);
 			path = OccapiMobile;
 			sourceTree = "<group>";
@@ -186,6 +244,41 @@
 				CD18339B187A2587008BD550 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CD828A271898157C007CA8D7 /* ios-linechart */ = {
+			isa = PBXGroup;
+			children = (
+				CD828A1B1898155A007CA8D7 /* LCInfoView.h */,
+				CD828A1C1898155A007CA8D7 /* LCInfoView.m */,
+				CD828A1D1898155A007CA8D7 /* LCLegendView.h */,
+				CD828A1E1898155A007CA8D7 /* LCLegendView.m */,
+				CD828A1F1898155B007CA8D7 /* LCLineChartView.h */,
+				CD828A201898155B007CA8D7 /* LCLineChartView.m */,
+				CD828A211898155B007CA8D7 /* UIKit+DrawingHelpers.h */,
+				CD828A221898155B007CA8D7 /* UIKit+DrawingHelpers.m */,
+			);
+			name = "ios-linechart";
+			sourceTree = "<group>";
+		};
+		CD828A281898159B007CA8D7 /* ECSlidingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CD828A29189815D8007CA8D7 /* ECPercentDrivenInteractiveTransition.h */,
+				CD828A2A189815D8007CA8D7 /* ECPercentDrivenInteractiveTransition.m */,
+				CD828A2B189815D8007CA8D7 /* ECSlidingAnimationController.h */,
+				CD828A2C189815D8007CA8D7 /* ECSlidingAnimationController.m */,
+				CD828A2D189815D8007CA8D7 /* ECSlidingConstants.h */,
+				CD828A2E189815D8007CA8D7 /* ECSlidingInteractiveTransition.h */,
+				CD828A2F189815D8007CA8D7 /* ECSlidingInteractiveTransition.m */,
+				CD828A30189815D8007CA8D7 /* ECSlidingSegue.h */,
+				CD828A31189815D8007CA8D7 /* ECSlidingSegue.m */,
+				CD828A32189815D8007CA8D7 /* ECSlidingViewController.h */,
+				CD828A33189815D8007CA8D7 /* ECSlidingViewController.m */,
+				CD828A34189815D8007CA8D7 /* UIViewController+ECSlidingViewController.h */,
+				CD828A35189815D8007CA8D7 /* UIViewController+ECSlidingViewController.m */,
+			);
+			name = ECSlidingViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,9 +359,9 @@
 			files = (
 				CD183387187A2587008BD550 /* Main_iPad.storyboard in Resources */,
 				CD18338C187A2587008BD550 /* Images.xcassets in Resources */,
-				CDEF35E81882E607002B833F /* Settings.bundle in Resources */,
 				CD183384187A2587008BD550 /* Main_iPhone.storyboard in Resources */,
 				CD18337B187A2587008BD550 /* InfoPlist.strings in Resources */,
+				CDF20FBC189D5D4400932BB8 /* defaultPrefs.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,14 +381,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDE454C91881E2AA0091EA0E /* DataClass.m in Sources */,
+				CD828A231898155B007CA8D7 /* LCInfoView.m in Sources */,
 				CD183381187A2587008BD550 /* AppDelegate.m in Sources */,
+				CD3AB6A818982483009D36E0 /* MEMenuViewController.m in Sources */,
 				CDEF35EB18831027002B833F /* LineChartViewController.m in Sources */,
+				CD828A261898155B007CA8D7 /* UIKit+DrawingHelpers.m in Sources */,
+				CD828A36189815D8007CA8D7 /* ECPercentDrivenInteractiveTransition.m in Sources */,
 				CDB184B118820D80001271D5 /* API.m in Sources */,
 				CD18337D187A2587008BD550 /* main.m in Sources */,
+				CDF20FC1189D6A5000932BB8 /* SettingsKeys.m in Sources */,
 				CDA73E21187A38A200A7B266 /* LoginViewController.m in Sources */,
 				CDA73E24187A3A1C00A7B266 /* KPIGroupsViewController.m in Sources */,
+				CD828A39189815D8007CA8D7 /* ECSlidingSegue.m in Sources */,
+				CD828A3B189815D8007CA8D7 /* UIViewController+ECSlidingViewController.m in Sources */,
+				CD828A3A189815D8007CA8D7 /* ECSlidingViewController.m in Sources */,
+				CD828A251898155B007CA8D7 /* LCLineChartView.m in Sources */,
 				CDA73E27187A3A3700A7B266 /* KPIsViewController.m in Sources */,
+				CD828A38189815D8007CA8D7 /* ECSlidingInteractiveTransition.m in Sources */,
+				CDFD3703189D823F00F9B4E8 /* AboutViewController.m in Sources */,
 				CDA73E2A187A3BD100A7B266 /* AlertsViewController.m in Sources */,
+				CD828A37189815D8007CA8D7 /* ECSlidingAnimationController.m in Sources */,
+				CDF20FBA189D438D00932BB8 /* SettingsViewController.m in Sources */,
+				CD828A241898155B007CA8D7 /* LCLegendView.m in Sources */,
+				CD6CFE3E18982F7700013D76 /* MenuNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

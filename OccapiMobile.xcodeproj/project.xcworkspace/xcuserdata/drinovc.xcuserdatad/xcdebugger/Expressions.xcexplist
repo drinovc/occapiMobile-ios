@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[MenuNavigationController viewDidLoad]:MenuNavigationController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.parentViewController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__48-[LineChartViewController loadChartCompleted:::]_block_invoke:LineChartViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "point[0]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[AlertsViewController loadAlertsCompleted:::]:AlertsViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[KPIsViewController tableView:didSelectRowAtIndexPath:]:KPIsViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[AlertsViewController didMoveToParentViewController:]:AlertsViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.isMovingFromParentViewController">
+            </PersistentString>
+            <PersistentString
+               value = "self.view">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[LoginViewController loginCompleted::]:LoginViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[MEMenuViewController prepareForSegue:sender:]:MEMenuViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "segue.identifier">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MEMenuViewController viewDidLoad]:MEMenuViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.parentViewController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[LoginViewController viewDidLoad]:LoginViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.dismissAutoLogin">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[LineChartViewController loadChartCompleted:::]:LineChartViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "point[0]">
+            </PersistentString>
+            <PersistentString
+               value = "[[NSUserDefaults standardUserDefaults] boolForKey:@&quot;reloadCharts&quot;]">
+            </PersistentString>
+            <PersistentString
+               value = "point[1]">
+            </PersistentString>
+            <PersistentString
+               value = "(int)point[0]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

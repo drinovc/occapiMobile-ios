@@ -9,15 +9,15 @@
 #import "DataClass.h"
 
 @implementation DataClass
-@synthesize apiUrl, dateTimeFormat, token, kpiGroup, kpi;
+@synthesize dateTimeFormat, timeFormat, token, email, password, kpiGroup, kpi;
 
 static DataClass *instance = nil;
 +(DataClass*) instance {
     @synchronized(self) {
         if(instance == nil) {
             instance = [DataClass new];
-            instance.apiUrl = @"http://212.235.191.163:8080/inteliui/resources/";
             instance.dateTimeFormat = @"yyyy-MM-dd 'at' HH:mm:ss";
+            instance.timeFormat = @"HH:mm:ss";
          }
         return instance;
     }

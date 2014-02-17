@@ -14,6 +14,7 @@
 @property (nonatomic, weak) IBOutlet UITextField *tfPassword;
 @property (nonatomic, weak) IBOutlet UIButton *btnSignIn;
 
+@property bool dismissAutoLogin;
 @property(nonatomic, strong) NSArray *kpiGroups;
 @property(nonatomic, strong) UIActivityIndicatorView *_loadingIndicator;
 

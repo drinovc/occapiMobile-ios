@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface LineChartViewController : UIViewController
+@property (nonatomic, strong) NSString *kpiName;
 
 @end

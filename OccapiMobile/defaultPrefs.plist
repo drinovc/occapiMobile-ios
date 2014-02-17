@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>rememberMe</key>
+	<true/>
+	<key>autoLogin</key>
+	<false/>
+	<key>refreshAlerts</key>
+	<true/>
+	<key>refreshAlertsTimeout</key>
+	<integer>5</integer>
+	<key>refreshCharts</key>
+	<true/>
+	<key>refreshChartsTimeout</key>
+	<integer>1</integer>
+	<key>apiUrl</key>
+	<string>http://212.235.191.163:8080/inteliui/resources/</string>
+	<key>email</key>
+	<string></string>
+	<key>password</key>
+	<string></string>
+</dict>
+</plist>

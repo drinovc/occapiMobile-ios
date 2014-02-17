@@ -14,6 +14,7 @@
 - (void) loadKPIGroupsCompleted:(BOOL)success :(NSString*)message :(NSArray*)jsonArray;
 - (void) loadKPIsCompleted:(BOOL)success :(NSString*)message :(NSArray*)jsonArray;
 - (void) loadAlertsCompleted:(BOOL)success :(NSString*)message :(NSDictionary*)json;
+- (void) loadChartCompleted:(BOOL)success :(NSString*)message :(NSDictionary*)json;
 @end
 
 @interface API : NSObject
@@ -27,5 +28,6 @@
 - (void) loadKPIGroups;
 - (void) loadKPIs;
 - (void) loadAlerts;
+- (void) loadChart;
 
 @end

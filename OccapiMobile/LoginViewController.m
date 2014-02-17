@@ -10,13 +10,17 @@
 #import "KPIGroupsViewController.h"
 #import "DataClass.h"
 #import "API.h"
+#import "DataClass.h"
+#import "ECSlidingViewController.h"
+#import "SettingsKeys.h"
+#import "MEMenuViewController.h"
 
 @interface LoginViewController ()
 
 @end
 
 @implementation LoginViewController
-@synthesize loginContainer, tfEmail, tfPassword, btnSignIn, kpiGroups, _loadingIndicator;
+@synthesize loginContainer, tfEmail, tfPassword, btnSignIn, dismissAutoLogin, kpiGroups, _loadingIndicator;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,11 +35,28 @@
 {
     [super viewDidLoad];
     
+    // adding gesture recognizer
+    // ECSlidingViewController *slidingViewController = (ECSlidingViewController*)self.navigationController.parentViewController;
+    // [self.view addGestureRecognizer:slidingViewController.panGesture];
+    
     // init loading indicator
     _loadingIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     _loadingIndicator.center = self.view.center;
     _loadingIndicator.hidesWhenStopped = YES;
     [self.view addSubview:_loadingIndicator];
+    
+    // style sign in button
+    
+    // set login data
+    if([[NSUserDefaults standardUserDefaults] boolForKey:REMEMBER_ME]) {
+        tfEmail.text = [[NSUserDefaults standardUserDefaults] objectForKey:EMAIL];
+        if([[NSUserDefaults standardUserDefaults] boolForKey:AUTO_LOGIN]) {
+            tfPassword.text = [[NSUserDefaults standardUserDefaults] objectForKey:PASSWORD];
+            if(!self.dismissAutoLogin) {
+                [self signIn];
+            }
+        }
+    }
     
     loginContainer.center = self.view.center; // not working
 }
@@ -86,6 +107,17 @@
 
 - (void)signIn
 {
+    if(tfEmail.text.length == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sign in error" message:@"You must enter valid email " delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    if(tfPassword.text.length == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sign in error" message:@"Yout must enter password" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    
     loginContainer.hidden = YES;
     [_loadingIndicator startAnimating];
     
@@ -94,35 +126,42 @@
     [_api login:tfEmail.text :tfPassword.text];
 }
 
+// called from API
 - (void) loginCompleted:(BOOL)success :(NSString*)message
 {
     NSLog(@"Login completed");
     
     if(success) {
-        API *_api = [[API alloc] init];
-        _api.delegate = self;
-        [_api loadKPIGroups];
+        ECSlidingViewController *slidingViewController = (ECSlidingViewController *)self.navigationController.parentViewController;
+        [slidingViewController setTopViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"KPIGroupsNavigationController"]];
+        slidingViewController.anchorLeftPeekAmount = 50.0;
+        slidingViewController.anchorLeftRevealAmount = 200.0;
+        slidingViewController.anchorRightPeekAmount = 50.0;
+        slidingViewController.anchorRightRevealAmount = 200.0;
+        [slidingViewController resetTopViewAnimated:NO];
+        
+        // selecting first row in menu
+        MEMenuViewController *menu = (MEMenuViewController *)slidingViewController.underLeftViewController;
+        [menu.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection: 0] animated:NO scrollPosition:UITableViewScrollPositionNone];
+        
+        DataClass *d = [DataClass instance];
+        d.email = tfEmail.text;
+        d.password = tfPassword.text;
+        
+        // store login data
+        if([[NSUserDefaults standardUserDefaults] boolForKey:REMEMBER_ME]) {
+            [[NSUserDefaults standardUserDefaults] setObject:tfEmail.text forKey:EMAIL];
+            if([[NSUserDefaults standardUserDefaults] boolForKey:AUTO_LOGIN]) {
+                [[NSUserDefaults standardUserDefaults] setObject:tfPassword.text forKey:PASSWORD];
+            }
+        }
     }
     else {
         // show alert about incorrect credentials
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sign in error" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
-    }
-}
-
-- (void) loadKPIGroupsCompleted:(BOOL)success :(NSString*)message :(NSArray*)jsonArray;
-{
-    NSLog(@"Load KPI Groups completed");
-    
-    if(success) {
-        kpiGroups = jsonArray;
-        
-        // load view - set segue id on view -> next view !!!
-        [self performSegueWithIdentifier:@"showKPIGroups" sender:self];
-    }
-    else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Load KPI Groups error" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+        loginContainer.hidden = NO;
+        [_loadingIndicator stopAnimating];
     }
 }
 
@@ -133,9 +172,6 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    KPIGroupsViewController * KPIGVC = [[KPIGroupsViewController alloc]init];
-    KPIGVC = [segue destinationViewController];
-    KPIGVC.kpiGroupsList = kpiGroups;
 }
 
 @end

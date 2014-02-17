@@ -11,16 +11,19 @@
 #import <Foundation/Foundation.h>
 
 @interface DataClass : NSObject {
-    NSString *apiUrl;
     NSString *dateTimeFormat;
     NSString *token;
+    NSString *email;
+    NSString *password;
     NSDictionary *kpiGroup;
     NSDictionary *kpi;
     
 }
-@property(nonatomic, retain) NSString *apiUrl;
 @property(nonatomic, retain) NSString *dateTimeFormat;
+@property(nonatomic, retain) NSString *timeFormat;
 @property(nonatomic, retain) NSString *token;
+@property(nonatomic, retain) NSString *email;
+@property(nonatomic, retain) NSString *password;
 @property(nonatomic, retain) NSDictionary *kpiGroup;
 @property(nonatomic, retain) NSDictionary *kpi;
 +(DataClass*) instance;
